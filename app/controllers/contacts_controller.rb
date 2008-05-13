@@ -5,8 +5,9 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.xml
   def index
-    @contacts = Contact.find(:all)
-
+#    @contacts = Contact.find(:all)
+	@contacts = session['user'].contacts
+	
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @contacts }
