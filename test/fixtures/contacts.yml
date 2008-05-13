@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  forename: MyString
+  surname: MyString
+  dob: 2008-04-27
+  user_id: 1
+
+two:
+  forename: MyString
+  surname: MyString
+  dob: 2008-04-27
+  user_id: 1

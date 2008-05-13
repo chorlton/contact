@@ -1,0 +1,32 @@
+<h1>Editing contact</h1>
+
+<%= error_messages_for :contact %>
+
+<% form_for(@contact) do |f| %>
+  <p>
+    <b>Forename</b><br />
+    <%= f.text_field :forename %>
+  </p>
+
+  <p>
+    <b>Surname</b><br />
+    <%= f.text_field :surname %>
+  </p>
+
+  <p>
+    <b>Dob</b><br />
+    <%= f.date_select :dob, :start_year => 1900 %>
+  </p>
+
+  <p>
+    <b>User</b><br />
+    <%= f.text_field :user_id %>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @contact %> |
+<%= link_to 'Back', contacts_path %>

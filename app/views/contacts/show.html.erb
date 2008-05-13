@@ -1,0 +1,23 @@
+<p>
+  <b>Forename:</b>
+  <%=h @contact.forename %>
+</p>
+
+<p>
+  <b>Surname:</b>
+  <%=h @contact.surname %>
+</p>
+
+<p>
+  <b>Dob:</b>
+  <%=h @contact.dob %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%=h @contact.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>
