@@ -12,8 +12,7 @@
   <tr>
     <td><%=h contact.forename %></td>
     <td><%=h contact.surname %></td>
-    <td><%=h contact.dob %></td>
-    <td><%=h contact.user_id %></td>
+    <td><%=h contact.dob.to_s(:long) %></td>
     <td><%= link_to 'Show', contact %></td>
     <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
     <td><%= link_to 'Destroy', contact, :confirm => 'Are you sure?', :method => :delete %></td>
