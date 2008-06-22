@@ -1,0 +1,13 @@
+DEFAULT LOGIN LOCATION
+The login system seems designed to allow you to browse around without logging in, then remember were you were when you DO log in. This is fine for something like a blog, but not so good when you want to secure the system right at point of entry. I want to always take you to YOUR homepage upon login.
+Considerations: 
+	The login system has to take the location as a parameter, either config, or through a default attempt to always access http://server:port/contacts/index
+	I don't need a welcome screen, the login screen will be all the welcome needed.
+	Need to learn exactly how redirect_to and redirect_back_or_default work. Maybe have a url in the config which will always be redirected to.
+	
+	
+DATES
+Consistent display and convenient selection/formatting of dates.
+
+USER ID - DONE!
+Should be set automatically when creating a new contact. Some kind of hidden field on the view, pre-initialised with the user_id?

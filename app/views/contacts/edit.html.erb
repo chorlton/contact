@@ -18,10 +18,7 @@
     <%= f.date_select :dob, :start_year => 1900 %>
   </p>
 
-  <p>
-    <b>User</b><br />
-    <%= f.text_field :user_id %>
-  </p>
+  <%= f.hidden_field :user_id %>
 
   <p>
     <%= f.submit "Update" %>

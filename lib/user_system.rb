@@ -44,7 +44,7 @@ module UserSystem
       return true  
     end
 
-    if user? and authorize?(session['user'])
+    if user? and authorize?(session[:user])
       return true
     end
 
@@ -84,15 +84,15 @@ module UserSystem
 
   def user?
     # First, is the user already authenticated?
-    return true if not session['user'].nil?
+    return true if not session[:user].nil?
 
     # If not, is the user being authenticated by a token?
     return false if not params['user']
     id = params['user']['id']
     key = params['key']
     if id and key
-      session['user'] = User.authenticate_by_token(id, key)
-      return true if not session['user'].nil?
+      session[:user] = User.authenticate_by_token(id, key)
+      return true if not session[:user].nil?
     end
 
     # Everything failed

@@ -5,6 +5,7 @@
     <%= form_input changeable(user, "firstname"), "firstname" %>
     <%= form_input changeable(user, "lastname"), "lastname" %>
     <%= form_input changeable(user, "login"), "login", :size => 30 %><br/>
+    <%= form_input changeable(user, "email"), "email", :size => 120 %><br/>
     <% if submit %>
       <%= form_input :submit_button, user.new_record? ? 'signup' : 'change_settings', :class => 'two_columns' %>
     <% end %>

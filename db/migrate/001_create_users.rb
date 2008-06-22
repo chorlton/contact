@@ -4,6 +4,7 @@ class CreateUsers < ActiveRecord::Migration
   CREATE TABLE 'users' (
     id INTEGER PRIMARY KEY,
     login VARCHAR(80) NOT NULL,
+    email VARCHAR(256) NOT NULL,
     salted_password VARCHAR(40) NOT NULL,
     firstname VARCHAR(40),
     lastname VARCHAR(40),

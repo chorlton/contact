@@ -71,7 +71,7 @@ class UserNotify < ActionMailer::Base
   end
 
   def setup_email(user)
-    @recipients = "#{user.login}"
+    @recipients = "#{user.email}"
     @from       = UserSystem::CONFIG[:email_from].to_s
     @subject    = "[#{UserSystem::CONFIG[:app_name]}] "
     @sent_on    = Time.now

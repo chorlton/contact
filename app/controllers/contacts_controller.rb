@@ -6,7 +6,7 @@ class ContactsController < ApplicationController
   # GET /contacts.xml
   def index
 #    @contacts = Contact.find(:all)
-	@contacts = session['user'].contacts
+	@contacts = session[:user].contacts
 	
     respond_to do |format|
       format.html # index.html.erb
@@ -17,7 +17,7 @@ class ContactsController < ApplicationController
   # GET /contacts/1
   # GET /contacts/1.xml
   def show
-    @contact = Contact.find(params[:id])
+    @contact = Contact.find_by_id_and_user_id(params[:id], session[:user].id)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -29,6 +29,7 @@ class ContactsController < ApplicationController
   # GET /contacts/new.xml
   def new
     @contact = Contact.new
+    @contact.user_id = session[:user].id
 
     respond_to do |format|
       format.html # new.html.erb
@@ -38,7 +39,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1/edit
   def edit
-    @contact = Contact.find(params[:id])
+    @contact = Contact.find_by_id_and_user_id(params[:id], session[:user].id)
   end
 
   # POST /contacts
@@ -61,7 +62,7 @@ class ContactsController < ApplicationController
   # PUT /contacts/1
   # PUT /contacts/1.xml
   def update
-    @contact = Contact.find(params[:id])
+    @contact = Contact.find_by_id_and_user_id(params[:id], session[:user].id)
 
     respond_to do |format|
       if @contact.update_attributes(params[:contact])
@@ -78,7 +79,7 @@ class ContactsController < ApplicationController
   # DELETE /contacts/1
   # DELETE /contacts/1.xml
   def destroy
-    @contact = Contact.find(params[:id])
+    @contact = Contact.find_by_id_and_user_id(params[:id], session[:user].id)
     @contact.destroy
 
     respond_to do |format|

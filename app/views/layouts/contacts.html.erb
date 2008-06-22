@@ -12,6 +12,9 @@
 
 <p style="color: green"><%= flash[:notice] %></p>
 
+Hello <%= session[:user].firstname %> You can <%= link_to 'logout.', :controller => 'user', :action =>'logout' %>
+
+ 
 <%= yield  %>
 
 </body>

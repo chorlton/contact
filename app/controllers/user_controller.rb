@@ -6,7 +6,7 @@ class UserController < ApplicationController
   def login
     return if generate_blank
     @user = User.new(params['user'])
-    if session['user'] = User.authenticate(params['user']['login'], params['user']['password'])
+    if session[:user] = User.authenticate(params['user']['login'], params['user']['password'])
       flash['notice'] = l(:user_login_succeeded)
       redirect_back_or_default :action => 'welcome'
     else
@@ -37,7 +37,7 @@ class UserController < ApplicationController
   end  
   
   def logout
-    session['user'] = nil
+    session[:user] = nil
     redirect_to :action => 'login'
   end
 
@@ -116,7 +116,7 @@ class UserController < ApplicationController
   end
 
   def delete
-    @user = session['user']
+    @user = session[:user]
     begin
       if UserSystem::CONFIG[:delayed_delete]
         User.transaction do
@@ -126,7 +126,7 @@ class UserController < ApplicationController
           UserNotify.deliver_pending_delete(@user, url)
         end
       else
-        session['user'] = nil;
+        session[:user] = nil;
         destroy(@user)
       end
       logout
@@ -144,7 +144,7 @@ class UserController < ApplicationController
         flash.now['notice'] = l(:user_restore_deleted_error, "#{@user['login']}")
         redirect_to :action => 'login'
       else
-        session['user'] = @user
+        session[:user] = @user
         redirect_to :action => 'welcome'
       end
     else
@@ -185,7 +185,7 @@ class UserController < ApplicationController
 
   # Generate a template user for certain actions on get
   def generate_filled_in
-    @user = session['user']
+    @user = session[:user]
     case request.method
     when :get
       render

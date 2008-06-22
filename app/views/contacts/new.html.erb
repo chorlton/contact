@@ -14,14 +14,11 @@
   </p>
 
   <p>
-    <b>Dob</b><br />
+    <b>D.O.B.</b><br />
     <%= f.date_select :dob, :start_year => 1900 %>
   </p>
 
-  <p>
-    <b>User</b><br />
-    <%= f.text_field :user_id %>
-  </p>
+  <%= f.hidden_field :user_id %>
 
   <p>
     <%= f.submit "Create" %>
