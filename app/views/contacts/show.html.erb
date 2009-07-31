@@ -18,5 +18,21 @@
   <%=h days_until(@contact.dob) %>
 </p>
 
+<h2>Telephone Numbers</h2>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Number</th>
+  </tr>
+
+<% for telno in @contact.telephone_numbers %>
+  <tr>
+    <td><%=h telno.teltype %></td>
+    <td><%=h telno.telnum %></td>
+  </tr>
+<% end %>
+</table>
+
 <%= link_to 'Edit', edit_contact_path(@contact) %> |
 <%= link_to 'Back', contacts_path %>
