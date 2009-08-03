@@ -1,5 +1,7 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :contacts
+  map.resources :contacts do |contacts|
+    contacts.resources :telephone_numbers, :controller => 'telephone_numbers'
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
 

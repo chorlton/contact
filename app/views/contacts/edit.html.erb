@@ -14,7 +14,7 @@
   </p>
 
   <p>
-    <b>Dob</b><br />
+    <b>D.O.B.</b><br />
     <%= f.date_select :dob, :start_year => 1900 %>
   </p>
 
@@ -24,6 +24,22 @@
     <%= f.submit "Update" %>
   </p>
 <% end %>
+
+<table>
+  <tr>
+    <th>Type</th>
+    <th>Number</th>
+  </tr>
+
+<% for telno in @contact.telephone_numbers %>
+  <tr>
+    <td><%=h telno.teltype %></td>
+    <td><%=h telno.telnum %></td>
+    <td><%= link_to 'Edit', edit_contact_telephone_number_path(@contact.id, telno.id) %></td>
+    <td><%= link_to 'Destroy', contact_telephone_number_path(@contact.id, telno.id), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
 
 <%= link_to 'Show', @contact %> |
 <%= link_to 'Back', contacts_path %>
