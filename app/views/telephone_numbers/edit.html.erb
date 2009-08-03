@@ -1,0 +1,23 @@
+<h1>Editing Telephone Number</h1>
+
+<%= error_messages_for :telephone_number %>
+
+<% form_for [@contact, @telno], :url => { :action => "update" } do |f| %>
+  <p>
+    <b>Type</b><br />
+    <%= f.text_field :teltype %>
+  </p>
+
+  <p>
+    <b>Number</b><br />
+    <%= f.text_field :telnum %>
+  </p>
+  <%= f.hidden_field :id %>
+  <%= f.hidden_field :contact_id %>
+  <p>
+    <%= f.submit "Save" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', [@contact, @telno] %> |
+<%= link_to 'Back', edit_contact_path %>
