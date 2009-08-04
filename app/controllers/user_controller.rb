@@ -8,7 +8,8 @@ class UserController < ApplicationController
     @user = User.new(params['user'])
     if session[:user] = User.authenticate(params['user']['login'], params['user']['password'])
       flash['notice'] = l(:user_login_succeeded)
-      redirect_back_or_default :action => 'welcome'
+      # redirect_back_or_default :action => 'welcome'
+      redirect_to contacts_path
     else
       @login = params['user']['login']
       flash.now['message'] = l(:user_login_failed)

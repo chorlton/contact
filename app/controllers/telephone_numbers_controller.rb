@@ -25,4 +25,37 @@ class TelephoneNumbersController < ApplicationController
       end
     end
   end
+
+  # GET /contacts/1/telephone_numbers/new
+  # GET /contacts/1/telephone_numbers/new.xml
+  def new
+    @contact = Contact.find_by_id_and_user_id(params[:contact_id], session[:user].id)
+    @telno = TelephoneNumber.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.xml  { render :xml => @telno }
+    end
+  end
+
+  # POST /contacts/1/telephone_numbers
+  # POST /contacts/1/telephone_numbers.xml
+  def create
+    @contact = Contact.find_by_id_and_user_id(params[:contact_id], session[:user].id)
+    @telno = TelephoneNumber.new(params[:telephone_number])
+    @telno.contact_id = params[:contact_id]
+
+    respond_to do |format|
+      if @telno.save
+        flash[:notice] = 'Telephone Number was successfully created.'
+        format.html { redirect_to(@contact, :action=>:edit) }
+        format.xml  { render :xml => @contact, :status => :created, :location => @contact }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @contact.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
+
+
 end

@@ -1,11 +1,21 @@
-<h1>New telephone_number</h1>
+<h1>New Telephone Number</h1>
 
 <%= error_messages_for :telephone_number %>
 
-<% form_for(@telephone_number) do |f| %>
+<% form_for [@contact, @telno], :url => { :action => "create" } do |f| %>
   <p>
-    <%= f.submit "Create" %>
+    <b>Type</b><br />
+    <%= f.collection_select :teltype, TelephoneType.types, :id, :teltype %>
+  </p>
+
+  <p>
+    <b>Number</b><br />
+    <%= f.text_field :telnum %>
+  </p>
+  <%= f.hidden_field :contact_id %>
+  <p>
+    <%= f.submit "Save" %>
   </p>
 <% end %>
 
-<%= link_to 'Back', telephone_numbers_path %>
+

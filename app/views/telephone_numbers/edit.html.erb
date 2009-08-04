@@ -5,7 +5,7 @@
 <% form_for [@contact, @telno], :url => { :action => "update" } do |f| %>
   <p>
     <b>Type</b><br />
-    <%= f.text_field :teltype %>
+    <%= f.collection_select :teltype, TelephoneType.types, :id, :teltype %>
   </p>
 
   <p>
